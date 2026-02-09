@@ -2,63 +2,65 @@
 <html lang="en">
 
 <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="title.jpg" type="image/png">
-	<title>Contact Us</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="title.jpg" type="image/png">
+    <title>Contact Us</title>
     <style>
-        .error{
+        .error {
             color: red;
         }
     </style>
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="vendors/linericon/style.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
-	<!-- main css -->
-	<link rel="stylesheet" href="css/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="vendors/linericon/style.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-	<!--================ Start Header Area =================-->
-	<header class="header_area">
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light">
-				<div class="container">
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-						<ul class="nav navbar-nav menu_nav justify-content-end">
-							<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-							<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-							<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-							<li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Pages</a>
-								<ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="portfolio-details.html">Portfolio Details</a></li>
-								</ul>
-							</li>
-								
-							<li class="nav-item active"><a class="nav-link" href="contact.html">Contact</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</header>
-	<!--================ End Header Area =================-->
+    <!--================ Start Header Area =================-->
+    <header class="header_area">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav justify-content-end">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                            <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                    aria-haspopup="true" aria-expanded="false">Pages</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="portfolio-details.html">Portfolio
+                                            Details</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item active"><a class="nav-link" href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--================ End Header Area =================-->
 
     <!--================ Start Banner Area =================-->
     <section class="banner_area">
@@ -75,7 +77,7 @@
         </div>
     </section>
     <!--================ End Banner Area =================-->
-    
+
     <!--================Contact Area =================-->
     <section class="contact_area section_gap">
         <div class="container">
@@ -100,24 +102,29 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <form class="row contact_form" action="" id="submit-form"  onsubmit="return validateForm()">
+                    <form class="row contact_form" action="https://formspree.io/f/maqdneoy" method="post"
+                        id="submit-form" onsubmit="return validateForm()">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" onkeyup="validateName()">
+                                <input type="text" class="form-control" id="name" name="name"
+                                    placeholder="Enter your name" onkeyup="validateName()">
                                 <span id="name-error" class="error"></span>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" onkeyup="validateEmail()">
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="Enter email address" onkeyup="validateEmail()">
                                 <span id="email-error" class="error"></span>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject" onkeyup="validateSubject()">
+                                <input type="text" class="form-control" id="subject" name="subject"
+                                    placeholder="Enter Subject" onkeyup="validateSubject()">
                                 <span id="subject-error" class="error"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <textarea class="form-control" name="m  essage" id="message" rows="1" placeholder="Enter Message" onkeyup="validateMessage()"></textarea>
+                                <textarea class="form-control" name="message" id="message" rows="1"
+                                    placeholder="Enter Message" onkeyup="validateMessage()"></textarea>
                                 <span id="message-error" class="error"></span>
                             </div>
                         </div>
@@ -127,52 +134,52 @@
                             </button>
                         </div>
                     </form>
-                    
+
                 </div>
             </div>
-            <div id="mapBox" class="mapBox" 
-                data-lat="9.938309754133659" 
-                data-lon="76.32168254959011" 
-                data-zoom="13" 
+            <div id="mapBox" class="mapBox" data-lat="9.938309754133659" data-lon="76.32168254959011" data-zoom="13"
                 data-info="Edathuruthikaran Holdings, 10/450-2, Kundannoor, Maradu, Ernakulam, Kerala 682304"
-                data-mlat="40.701083"
-                data-mlon="-74.1522848">
+                data-mlat="40.701083" data-mlon="-74.1522848">
             </div>
         </div>
     </section>
     <!--================Contact Area =================-->
-        
-        <!--================Footer Area =================-->
-	<footer class="footer_area">
+
+    <!--================Footer Area =================-->
+    <footer class="footer_area">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="footer_top flex-column">
-						<div class="footer_logo pt-4">
-							<a href="https://www.linkedin.com/in/muhammed-misbah-tu/">
-								<img src="img/testimonials/signature.png" alt="">
-							</a>
-							<h4>Follow Me</h4>
-						</div>
-						<div class="footer_social">
-							<a href="https://www.instagram.com/misbah_t_u/"><i class="fa fa-instagram"></i></a>	
-							<a href="https://www.linkedin.com/in/muhammed-misbah-tu/"><i class="fa fa-linkedin"></i></a>
-							<a href="https://www.facebook.com/misbah.misbah.16752754/"><i class="fa fa-facebook-square"></i></a>
-							<a href="https://github.com/muhammedmisbahTU"><i class="fa fa-github"></i></a>
-						</div>
-					</div>
+                        <div class="footer_logo pt-4">
+                            <a href="https://www.linkedin.com/in/muhammed-misbah-tu/">
+                                <img src="img/testimonials/signature.png" alt="">
+                            </a>
+                            <h4>Follow Me</h4>
+                        </div>
+                        <div class="footer_social">
+                            <a href="https://www.instagram.com/misbah_t_u/"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/muhammed-misbah-tu/"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://www.facebook.com/misbah.misbah.16752754/"><i
+                                    class="fa fa-facebook-square"></i></a>
+                            <a href="https://github.com/muhammedmisbahTU"><i class="fa fa-github"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row footer_bottom justify-content-center">
                 <p class="col-lg-8 col-sm-12 footer-text">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Muhammed Misbah T U <i class="fa fa-heart-o" aria-hidden="true"></i> 
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> All rights reserved | Muhammed Misbah T U
+                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
             </div>
         </div>
     </footer>
     <!--================End Footer Area =================-->
-    
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery-3.2.1.min.js"></script>
@@ -204,28 +211,29 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         //         },
         //         error:function (err){
         //             alert("Something Error")
-    
+
         //         }
         //     })
         // })
         $(document).ready(function () {
-          $("#submit-form").submit(function (e) {
-            e.preventDefault();
-            if (validateForm()) {
-              $.ajax({
-                url: "https://script.google.com/macros/s/AKfycbypVBKdNCGaHwo5hCEF74LsnGsqCNwAENEtgkqmzwZ1IT0zpGbauBBsuj-mHah5Sih-hQ/exec",
-                data: $("#submit-form").serialize(),
-                method: "post",
-                success: function (response) {
-                  alert("Form submitted successfully");
-                  window.location.reload();
-                },
-                error: function (err) {
-                  alert("Something went wrong");
+            $("#submit-form").submit(function (e) {
+                e.preventDefault();
+                if (validateForm()) {
+                    $.ajax({
+                        url: "https://formspree.io/f/maqdneoy",
+                        data: $("#submit-form").serialize(),
+                        method: "POST",
+                        dataType: "json",
+                        success: function (response) {
+                            alert("Form submitted successfully");
+                            $("#submit-form")[0].reset();
+                        },
+                        error: function (err) {
+                            alert("Something went wrong. Please try again.");
+                        }
+                    });
                 }
-              });
-            }
-          });
+            });
         });
     </script>
     <script src="scripts.js"></script>
