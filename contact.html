@@ -219,28 +219,102 @@
             $("#submit-form").submit(function (e) {
                 e.preventDefault();
                 if (validateForm()) {
+                    var email = $("#email").val();
+                    var $submitBtn = $(this).find('button[type="submit"]');
+                    var originalBtnText = $submitBtn.text();
+
+                    // Show loading state
+                    $submitBtn.prop('disabled', true).text('Verifying Email...');
+
+                    // Abstract API Call for Email Validation
+                    // REPLACE 'YOUR_API_KEY' WITH YOUR ACTUAL ABSTRACT API KEY
                     $.ajax({
-                        url: "https://formspree.io/f/maqdneoy",
-                        data: $("#submit-form").serialize(),
-                        method: "POST",
-                        dataType: "json",
-                        success: function (response) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Sent!',
-                                text: 'Your message is on its way.',
-                                confirmButtonColor: '#4458dc',
-                                fontFamily: 'Roboto, sans-serif'
-                            });
-                            $("#submit-form")[0].reset();
+                        url: "https://emailreputation.abstractapi.com/v1/?api_key=39886b2f475f4b57a18566ce79851884&email=" + email,
+                        timeout: 3000, // 3 second timeout
+                        success: function (data) {
+                            // Check for 'is_smtp_valid' from Email Reputation API
+                            var isValid = false;
+
+                            // Revised Validation Logic: Check Format, MX Records, and Disposable status
+                            // This is safer than strict SMTP checks which can fail for valid emails (e.g. anti-spam measures)
+                            if (data.is_valid_format.value && !data.is_disposable_email.value) {
+                                isValid = true;
+                            } else if (data.deliverability === "DELIVERABLE") {
+                                isValid = true;
+                            } else if (data.quality_score && data.quality_score >= 0.7) {
+                                isValid = true;
+                            }
+
+                            if (isValid) {
+                                // Proceed to Formspree Submission
+                                $submitBtn.text('Sending...');
+                                $.ajax({
+                                    url: "https://formspree.io/f/maqdneoy",
+                                    data: $("#submit-form").serialize(),
+                                    method: "POST",
+                                    dataType: "json",
+                                    success: function (response) {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Sent!',
+                                            text: 'Your message is on its way.',
+                                            confirmButtonColor: '#4458dc',
+                                            fontFamily: 'Roboto, sans-serif'
+                                        });
+                                        $("#submit-form")[0].reset();
+                                        $submitBtn.prop('disabled', false).text(originalBtnText);
+                                    },
+                                    error: function (err) {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: 'Something went wrong with the submission. Please try again.',
+                                            confirmButtonColor: '#4458dc',
+                                            fontFamily: 'Roboto, sans-serif'
+                                        });
+                                        $submitBtn.prop('disabled', false).text(originalBtnText);
+                                    }
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Invalid Email',
+                                    text: 'This email address does not appear to exist. Please check for typos.',
+                                    confirmButtonColor: '#4458dc',
+                                    fontFamily: 'Roboto, sans-serif'
+                                });
+                                $submitBtn.prop('disabled', false).text(originalBtnText);
+                            }
                         },
-                        error: function (err) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Something went wrong. Please try again.',
-                                confirmButtonColor: '#4458dc',
-                                fontFamily: 'Roboto, sans-serif'
+                        error: function () {
+                            // API Fallback: If verification fails (e.g., quota exceeded), allow submission
+                            console.warn("Email verification API failed, proceeding with fallback.");
+                            $.ajax({
+                                url: "https://formspree.io/f/maqdneoy",
+                                data: $("#submit-form").serialize(),
+                                method: "POST",
+                                dataType: "json",
+                                success: function (response) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Sent!',
+                                        text: 'Your message is on its way.',
+                                        confirmButtonColor: '#4458dc',
+                                        fontFamily: 'Roboto, sans-serif'
+                                    });
+                                    $("#submit-form")[0].reset();
+                                    $submitBtn.prop('disabled', false).text(originalBtnText);
+                                },
+                                error: function (err) {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: 'Something went wrong. Please try again.',
+                                        confirmButtonColor: '#4458dc',
+                                        fontFamily: 'Roboto, sans-serif'
+                                    });
+                                    $submitBtn.prop('disabled', false).text(originalBtnText);
+                                }
                             });
                         }
                     });
