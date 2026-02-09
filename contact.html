@@ -225,11 +225,23 @@
                         method: "POST",
                         dataType: "json",
                         success: function (response) {
-                            alert("Form submitted successfully");
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Sent!',
+                                text: 'Your message is on its way.',
+                                confirmButtonColor: '#4458dc',
+                                fontFamily: 'Roboto, sans-serif'
+                            });
                             $("#submit-form")[0].reset();
                         },
                         error: function (err) {
-                            alert("Something went wrong. Please try again.");
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong. Please try again.',
+                                confirmButtonColor: '#4458dc',
+                                fontFamily: 'Roboto, sans-serif'
+                            });
                         }
                     });
                 }
@@ -237,6 +249,7 @@
         });
     </script>
     <script src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
