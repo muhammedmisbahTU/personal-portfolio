@@ -59,111 +59,69 @@
     // return isValid;
 
     // }
-    var nameError = document.getElementById("name-error");
-var emailError = document.getElementById("email-error");
-var subjectError = document.getElementById("subject-error");
-var phoneError = document.getElementById("phone-error");
-var messageError = document.getElementById("message-error");
-var submitError = document.getElementById("button-error");
-
+    // Individual validation functions for real-time (onkeyup) feedback
 function validateName() {
-  var name = document.getElementById("name").value;
-  if (name.length == 0) {
-    nameError.innerHTML = "Name is required!";
-    return false;
-  }
-  if (!name.match(/^[A-Za-z]+(\s[A-Za-z]+)+$/)) {
-    nameError.innerHTML = "Invalid name!";
-    return false;
-  }
-  if (name.match(/\s/)) {
-    nameError.innerHTML =
-      'Valid';
-  } else {
-    nameError.innerHTML = "Please enter your full name.";
-  }
-  return true;
+    var name = document.getElementById('name').value;
+    var nameError = document.getElementById('name-error');
+    var nameRegex = /^[a-zA-Z]{2,}(\s[a-zA-Z]{2,})+$/;
+
+    if (name.trim() === '') {
+        nameError.textContent = 'Name is required';
+        return false;
+    } else if (!nameRegex.test(name)) {
+        nameError.textContent = 'Enter full name (at least two words)';
+        return false;
+    }
+    nameError.textContent = '';
+    return true;
 }
 
 function validateEmail() {
-  var email = document.getElementById("email").value;
-  if (email.length == 0) {
-    emailError.innerHTML = "Email is required!";
-    return false;
-  }
-  if (!email.match(/^[\w\.-]+@[\w\.-]+\.[\w]{2,}$/)) {
-    emailError.innerHTML = "Invalid email";
-    return false;
-  }
+    var email = document.getElementById('email').value;
+    var emailError = document.getElementById('email-error');
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  emailError.innerHTML =
-    'valid';
-
-  return true;
+    if (email.trim() === '') {
+        emailError.textContent = 'Email is required';
+        return false;
+    } else if (!emailRegex.test(email)) {
+        emailError.textContent = 'Invalid email address';
+        return false;
+    }
+    emailError.textContent = '';
+    return true;
 }
 
-  function validatePhone() {
-    var phone = document.getElementById("phone").value;
-    
-    if (phone.length == 0) {
-      phoneError.innerHTML = "Phone No is required!";
-      phoneError.classList.add("error-message");
-      return false;
+function validateSubject() {
+    var subject = document.getElementById('subject').value;
+    var subjectError = document.getElementById('subject-error');
+    if (subject.trim() === '') {
+        subjectError.textContent = 'Subject is required';
+        return false;
     }
-
-    if (!phone.match(/^[0-9]*$/)) {
-    
-      phoneError.innerHTML = "Only digits please";
-      phoneError.classList.add("error-message");
-      return false;
-    }
-
-    if (phone.length !== 10) {
-      phoneError.innerHTML = "Phone no should be 10 digits";
-      phoneError.classList.add("error-message");
-      return false;
-    }
-
-    phoneError.innerHTML =
-      '<div class="valid-message">' +
-      '<img src="assets/images/Green-check.svg" alt="Valid" style="width: 20px; height: 20px;">' +
-      "</div>";
-    phoneError.classList.remove("error-message");
+    subjectError.textContent = '';
     return true;
-  }
-   function validateSubject() {
-     var subject = document.getElementById("subject").value;
+}
 
-     if (subject.length === 0) {
-       subjectError.innerHTML = "Subject is required!";
-       subjectError.classList.add("error-message");
-       return false;
-     }
+function validateMessage() {
+    var message = document.getElementById('message').value;
+    var messageError = document.getElementById('message-error');
+    if (message.trim() === '') {
+        messageError.textContent = 'Message is required';
+        return false;
+    }
+    messageError.textContent = '';
+    return true;
+}
 
-     if (!subject.match(/^[A-Za-z\s]+$/)) {
-  
-       subjectError.innerHTML = "Only alphabets and spaces please";
-       subjectError.classList.add("error-message");
-       return false;
-     }
+// Final check on form submission (onsubmit)
+function validateForm() {
+    // Run all validations and store results
+    var isNameValid = validateName();
+    var isEmailValid = validateEmail();
+    var isSubjectValid = validateSubject();
+    var isMessageValid = validateMessage();
 
-     subjectError.innerHTML = 'valid';
-     subjectError.classList.remove("error-message");
-     return true;
-   }
-   function validateMessage() {
-     var message = document.getElementById("comment").value;
-    
-     if (message.length === 0) {
-       messageError.innerHTML = "Message is required!";
-       messageError.classList.add("error-message");
-       return false;
-     }
-
-     messageError.innerHTML =
-       '<div class="valid-message">' +
-       '<img src="assets/images/Green-check.svg" alt="Valid" style="width: 20px; height: 20px;">' +
-       "</div>";
-     messageError.classList.remove("error-message");
-     return true;
-   }
+    // Only returns true if every field passes
+    return isNameValid && isEmailValid && isSubjectValid && isMessageValid;
+}
