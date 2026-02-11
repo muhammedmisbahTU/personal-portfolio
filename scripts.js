@@ -79,7 +79,7 @@ function validateName() {
 function validateEmail() {
     var email = document.getElementById('email').value;
     var emailError = document.getElementById('email-error');
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (email.trim() === '') {
         emailError.textContent = 'Email is required';
